@@ -44,6 +44,3 @@ Thumbs.db
 # Cache
 .angular
 .vscode
-
-# Ignore parent folder
-../**/*
