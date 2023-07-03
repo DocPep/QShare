@@ -15,5 +15,11 @@
     "proseWrap": "preserve",
     "htmlWhitespaceSensitivity": "css",
     "vueIndentScriptAndStyle": false,
-    "endOfLine": "auto"
+    "endOfLine": "auto",
+    "overrides": [{
+        "files": "*.json",
+        "options": {
+            "tabWidth": 2
+        }
+    }]
 }

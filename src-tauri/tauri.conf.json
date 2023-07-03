@@ -7,8 +7,8 @@
     "withGlobalTauri": false
   },
   "package": {
-    "productName": "QShare",
-    "version": "0.0.0"
+    "productName": "qshare",
+    "version": "0.0.1"
   },
   "tauri": {
     "allowlist": {
@@ -21,14 +21,8 @@
     "bundle": {
       "active": true,
       "targets": "all",
-      "identifier": "com.tauri.dev",
-      "icon": [
-        "icons/32x32.png",
-        "icons/128x128.png",
-        "icons/128x128@2x.png",
-        "icons/icon.icns",
-        "icons/icon.ico"
-      ]
+      "identifier": "com.application.qshare",
+      "icon": ["icons/32x32.png", "icons/128x128.png", "icons/128x128@2x.png", "icons/icon.icns", "icons/icon.ico"]
     },
     "security": {
       "csp": null
@@ -37,9 +31,9 @@
       {
         "fullscreen": false,
         "resizable": true,
-        "title": "QShare",
-        "width": 800,
-        "height": 600
+        "title": "QShare - A file sharing application.",
+        "width": 1024,
+        "height": 768
       }
     ]
   }
