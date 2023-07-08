@@ -10,7 +10,7 @@ import { Events } from './events/events.module';
     CommonModule,
     Events
   ],
-  exports: [Common]
+  exports: []
 })
 export class Common extends Events { 
   constructor() {

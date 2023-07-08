@@ -7,7 +7,7 @@ import { listen } from "@tauri-apps/api/event";
   imports: [
     CommonModule,
   ],
-  exports: [Events]
+  exports: []
 })
 export class Events {
     // event handlers
@@ -25,6 +25,8 @@ export class Events {
     }
     // add events listeners
     constructor() {
+        listen<string>("about", this.aboutEvent);
         listen<string>("file", this.fileEvent);
+        listen<string>("help", this.helpEvent);
     }
 }
