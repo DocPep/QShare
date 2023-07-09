@@ -15,18 +15,18 @@ export class Events {
         console.log(`Use this to find the file: ${event.payload}`);
         alert("Native about button was clicked");
     }
-    fileEvent(event: any) : void {
-        console.log(`Use this to find the file: ${event.payload}`);
-        alert("Native file button was clicked");
-    }
     helpEvent(event: any) : void {
         console.log(`Use this to find the file: ${event.payload}`);
         alert("Native help button was clicked");
     }
+    openEvent(event: any) : void {
+        console.log(`Use this to find the file: ${event.payload}`);
+        alert("Native open button was clicked");
+    }
     // add events listeners
     constructor() {
         listen<string>("about", this.aboutEvent);
-        listen<string>("file", this.fileEvent);
+        listen<string>("open", this.openEvent);
         listen<string>("help", this.helpEvent);
     }
 }

@@ -16,6 +16,15 @@
       "shell": {
         "all": false,
         "open": true
+      },
+      "dialog": {
+        "all": true
+      },
+      "fs": {
+        "all": true
+      },
+      "http": {
+        "all": true
       }
     },
     "bundle": {
@@ -30,10 +39,11 @@
     "windows": [
       {
         "fullscreen": false,
+        "maximized": true,
         "resizable": true,
         "title": "QShare - A file sharing application.",
-        "width": 1024,
-        "height": 768
+        "width": 800,
+        "height": 600
       }
     ]
   }
