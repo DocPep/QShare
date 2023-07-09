@@ -1,20 +1,33 @@
-import { Component } from "@angular/core";
-import { invoke } from "@tauri-apps/api/tauri";
+import { Component, OnInit } from "@angular/core";
+import { Router } from "@angular/router";
 
 @Component({
-  selector: "app-root",
-  templateUrl: "./app.component.html",
-  styleUrls: ["./app.component.css"],
+    selector: "app-root",
+    templateUrl: "./app.component.html",
+    styleUrls: ["./app.component.css"]
 })
-export class AppComponent {
-  greetingMessage = "";
+export class AppComponent implements OnInit {
+    menuItemList: Array<{ title: string; route: string; key: string; icon: string }> = [
+        { key: "share_file", title: "Share a file", route: "share", icon: "send" },
+        { key: "share_history", title: "History", route: "history", icon: "manage_history" }
+    ];
+    currentPage: string = "share_file";
 
-  greet(event: SubmitEvent, name: string): void {
-    event.preventDefault();
+    constructor(private router: Router) {}
 
-    // Learn more about Tauri commands at https://tauri.app/v1/guides/features/command
-    invoke<string>("greet", { name }).then((text) => {
-      this.greetingMessage = text;
-    });
-  }
+    ngOnInit(): void {
+        //Called after the constructor, initializing input properties, and the first call to ngOnChanges.
+        //Add 'implements OnInit' to the class.
+        this.router.navigate(["/share"]);
+    }
+
+    getCurrentPageTitle(): string {
+        let titleObject = this.menuItemList.find((menuItem) => menuItem.key == this.currentPage);
+        return titleObject ? titleObject.title : "";
+    }
+
+    handlePageChange(menuItem: { title: string; route: string; key: string; icon: string }): void {
+        this.currentPage = menuItem.key;
+        this.router.navigate(["/" + menuItem.route]);
+    }
 }

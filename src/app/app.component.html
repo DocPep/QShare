@@ -1,18 +1,32 @@
-<div class="container">
-  <h1>Welcome to Tauri + Angular!</h1>
-  <div class="row">
-    <a href="https://tauri.app" target="_blank">
-      <img src="/assets/tauri.svg" class="logo tauri" alt="Tauri logo" />
-    </a>
-    <a href="https://angular.io" target="_blank">
-      <img src="/assets/angular.svg" class="logo angular" alt="Angular logo" />
-    </a>
-  </div>
-  <p>Click on the logos to learn more about the frameworks</p>
-
-  <form class="row" (submit)="greet($event, greetInput.value)">
-    <input #greetInput id="greet-input" placeholder="Enter a name..." />
-    <button type="submit">Greet</button>
-  </form>
-  <p>{{ greetingMessage }}</p>
-</div>
+<mat-drawer-container style="height: 100%; width: 100%; user-select: none; cursor: default; font-family: monospace;">
+    <mat-drawer #drawer mode="side" opened="false" class="w-64 h-full p-2 shadow-xl shadow-stone-400 backdrop-blur">
+        <div class="w-full p-2 text-center text-base font-medium">Menu</div>
+        <div
+            class="w-full h-10 p-2 mt-1.5 mb-1.5 flex flex-row justify-center border border-stone-800 rounded cursor-pointer overflow-hidden relative hover:shadow-lg hover:backdrop-blur hover:shadow-stone-400 transition-shadow"
+            [class]="currentPage == menuItem.key ? 'bg-stone-700 text-white' : 'group'"
+            *ngFor="let menuItem of menuItemList"
+            (click)="handlePageChange(menuItem); drawer.toggle()"
+        >
+            <span class="h-full flex flex-col justify-center p-1 bg-transparent">
+                <span class="material-icons bg-transparent">{{ menuItem.icon }}</span></span
+            >
+            <span class="flex-grow h-full flex flex-col justify-center p-2 bg-transparent">{{ menuItem.title }}</span>
+            <span
+                class="w-0 h-0 top-1/2 rounded absolute group-hover:w-full group-hover:h-full group-hover:top-0 -z-10 bg-stone-400 duration-300 transition-all ease-out"
+            ></span>
+        </div>
+    </mat-drawer>
+    <mat-drawer-content class="p-3 bg-stone-200">
+        <div class="w-full h-full flex flex-col p-2 bg-white rounded shadow-xl shadow-stone-400 border-stone-400">
+            <div class="h-12 p-1 pl-2 w-full flex flex-row bg-stone-800 rounded text-white shadow-xl shadow-stone-400 backdrop-blur">
+                <span (click)="drawer.toggle()" class="p-1 flex flex-col justify-center h-full cursor-pointer">
+                    <span class="material-icons-outlined">menu</span>
+                </span>
+                <span class="h-full p-1 flex flex-col justify-center">{{ getCurrentPageTitle() }}</span>
+            </div>
+            <div class="flex-grow overflow-y-auto p-4">
+                <router-outlet></router-outlet>
+            </div>
+        </div>
+    </mat-drawer-content>
+</mat-drawer-container>
