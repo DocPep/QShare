@@ -6,7 +6,7 @@
     "singleQuote": false,
     "quoteProps": "as-needed",
     "jsxSingleQuote": false,
-    "trailingComma": "none",
+    "trailingComma": "es5",
     "bracketSpacing": true,
     "jsxBracketSameLine": false,
     "arrowParens": "always",
@@ -16,10 +16,16 @@
     "htmlWhitespaceSensitivity": "css",
     "vueIndentScriptAndStyle": false,
     "endOfLine": "auto",
-    "overrides": [{
+    "overrides": [
+      {
+        "files": ["*.html", "*.css"],
+        "options": {}
+      }, {
         "files": "*.json",
         "options": {
             "tabWidth": 2
         }
-    }]
-}
+    }
+    ]
+  }
+  

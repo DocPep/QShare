@@ -1,4 +1,5 @@
 import { Component, OnInit } from "@angular/core";
+import { TauriEvent } from "@tauri-apps/api/event";
 
 @Component({
     selector: "app-share",
@@ -7,6 +8,6 @@ import { Component, OnInit } from "@angular/core";
 })
 export class ShareComponent implements OnInit {
     ngOnInit(): void {
-        console.log("Share component initialized.");
+        
     }
 }
