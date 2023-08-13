@@ -1,4 +1,6 @@
 #!/bin/sh
 
 clear
+#RUST_BACKTRACE=1 yarn tauri dev
+#RUST_BACKTRACE=full yarn tauri dev
 yarn tauri dev

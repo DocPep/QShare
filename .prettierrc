@@ -1,5 +1,5 @@
 {
-    "printWidth": 160,
+    "printWidth": 120,
     "tabWidth": 4,
     "useTabs": false,
     "semi": true,
@@ -17,15 +17,15 @@
     "vueIndentScriptAndStyle": false,
     "endOfLine": "auto",
     "overrides": [
-      {
-        "files": ["*.html", "*.css"],
-        "options": {}
-      }, {
-        "files": "*.json",
-        "options": {
-            "tabWidth": 2
+        {
+            "files": ["*.html", "*.css"],
+            "options": {}
+        },
+        {
+            "files": "*.json",
+            "options": {
+                "tabWidth": 2
+            }
         }
-    }
     ]
-  }
-  
+}

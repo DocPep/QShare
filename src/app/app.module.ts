@@ -4,10 +4,11 @@ import { AppComponent } from "./app.component";
 import { AppRoutingModule } from "./app.routing";
 import { Common } from "./common/common.module";
 import { Events } from "./common/events.module";
+import { BrowserAnimationsModule } from "@angular/platform-browser/animations";
 
 @NgModule({
     declarations: [AppComponent],
-    imports: [BrowserModule, AppRoutingModule, Common],
+    imports: [BrowserAnimationsModule, BrowserModule, AppRoutingModule, Common],
     providers: [],
     bootstrap: [AppComponent]
 })
