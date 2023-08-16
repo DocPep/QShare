@@ -1,0 +1,24 @@
+input {
+    --tw-border-opacity: 1;
+    box-shadow: none;
+    background-color: #ffffff;
+    color: gray;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    color: rgb(55 65 81 / var(--tw-text-opacity));
+    transition-property: all;
+    transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+    transition-duration: 150ms;
+    border-radius: 0.25rem;
+    text-align: center;
+    border-bottom-width: 2px;
+    border-color: transparent;
+}
+input:focus {
+    --tw-border-opacity: 1;
+    border-bottom-color: rgb(17 24 39 / var(--tw-border-opacity));
+    color: rgb(17 24 39 / var(--tw-border-opacity));
+    border-bottom-left-radius: 0px;
+    border-bottom-right-radius: 0px;
+}

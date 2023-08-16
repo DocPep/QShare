@@ -1,27 +1,67 @@
 <div class="w-full h-full" *ngIf="isLoading">
     <app-spinner></app-spinner>
 </div>
-<div class="w-full h-full overflow-y-auto p-3" *ngIf="!isLoading">
+<div class="w-full h-full overflow-y-auto p-3 select-none" *ngIf="!isLoading">
     <div class="w-full flex flex-wrap">
-        <div class="w-full p-1 m-1 flex justify-start text-gray-400" *ngIf="directoryNavigationStack.length > 1">
-            <div (click)="popDirectory()"
-                class="material-icons p-1 rounded-full border border-gray-600 hover:border-gray-800 hover:text-white hover:bg-gray-600 transition-all"
+        <div
+            class="w-full p-1 m-1 flex text-gray-400"
+            [class]="[
+                shareStatusCount > 0 && directoryNavigationStack.length <= 1 ? 'justify-end' : '',
+                directoryNavigationStack.length > 1 ? 'justify-between' : ''
+            ]"
+        >
+            <div class="flex-grow flex items-center">
+                <div
+                    *ngIf="directoryNavigationStack.length > 1"
+                    (click)="popDirectory()"
+                    class="material-icons cursor-pointer p-1 h-fit rounded-full border border-gray-600 hover:border-gray-800 hover:text-white hover:bg-gray-600 transition-all"
+                    matTooltip="Go Back"
+                    matTooltipPosition="right"
+                >
+                    arrow_back
+                </div>
+                <div
+                    (click)="isHiddenVisible = !isHiddenVisible"
+                    class="material-icons cursor-pointer h-fit p-1 rounded-full border border-gray-600 hover:border-gray-800 hover:text-white hover:bg-gray-600 transition-all"
+                    [matTooltip]="isHiddenVisible ? 'Hide hidden directory' : 'Show hidden directory'"
+                    matTooltipPosition="right"
+                    [class]="[directoryNavigationStack.length > 1 ? 'ml-2' : 'm-0']"
+                >
+                    {{ isHiddenVisible ? "visibility" : "visibility_off" }}
+                </div>
+                <form
+                    class="flex-grow ml-2"
+                    (submit)="pushCustomPath($event)"
+                    matTooltip="Click to edit path"
+                    matTooltipPosition="above"
+                >
+                    <input name="path" class="p-2 w-full" [value]="directoryNavigationStack.at(-1)" />
+                </form>
+            </div>
+            <div
+                *ngIf="shareStatusCount > 0"
+                class="material-icons h-fit cursor-pointer p-1 rounded-full border border-gray-600 hover:border-gray-800 hover:text-white hover:bg-gray-600 transition-all"
+                matTooltip="Apply Changes"
+                matTooltipPosition="left"
             >
-                arrow_back
+                check
             </div>
         </div>
         <div
-            (click)="!item[1] ? toggleShare(_index) : navigateDirectory(item[0])"
             class="w-full p-1 m-1 text-gray-600 text-xl hover:bg-gray-300 rounded cursor-pointer transition-all"
             *ngFor="let item of directoryData; let _index = index"
+            [class]="[isHiddenVisible ? '' : processTitle(item[0])?.startsWith('.') ? 'hidden' : '']"
         >
             <div class="flex">
-                <div class="flex-grow flex items-center">
+                <div
+                    class="flex-grow flex items-center"
+                    (click)="!item[1] ? toggleShare(_index) : navigateDirectory(item[0])"
+                >
                     <div class="material-icons">{{ item[1] ? "folder" : "description" }}</div>
                     <div class="ml-2 text-base">{{ processTitle(item[0]) }}</div>
                 </div>
                 <div class="w-fit">
-                    <mat-checkbox [checked]="shareStatusList[_index]"></mat-checkbox>
+                    <mat-checkbox [checked]="shareStatusList[_index]" (click)="toggleShare(_index)"></mat-checkbox>
                 </div>
             </div>
         </div>
