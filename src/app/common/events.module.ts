@@ -20,8 +20,7 @@ export class Events {
         alert("Native help button was clicked");
     }
     openEvent(event: any) : void {
-        console.log(`Use this to find the file: ${event.payload}`);
-        alert("Native open button was clicked");
+        window.location.href = "/share";
     }
     // add events listeners
     constructor() {

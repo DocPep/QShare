@@ -1,14 +1,13 @@
 import { NgModule } from '@angular/core';
-import { CommonModule } from '@angular/common';
 import { ShareRoutingModule } from './share.routing';
 import { ShareComponent } from './share.component';
-
+import { Common } from 'src/app/common/common.module';
 
 @NgModule({
   declarations: [ShareComponent],
   imports: [
-    CommonModule,
-    ShareRoutingModule
+    ShareRoutingModule,
+    Common
   ],
   bootstrap: [ShareComponent]
 })
